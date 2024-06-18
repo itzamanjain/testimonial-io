@@ -22,7 +22,6 @@ const testimonialSchema = new mongoose.Schema(
     },
     customerImage: {
       type: String,
-      required: true,
       trim: true,
     },
     customerSocialId: {
