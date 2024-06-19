@@ -2,8 +2,8 @@
 import React from 'react'
 import { useRouter } from 'next/navigation'
 
-function page() {
-  const router = useRouter()
+function Page() {
+  const router = useRouter();
   return (
     <>
     <h1 className="text-3xl text-white">Collect Your Testimonials</h1>
@@ -18,4 +18,4 @@ function page() {
   )
 }
 
-export default page
+export default Page
