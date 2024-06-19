@@ -1,10 +1,16 @@
 import mongoose from "mongoose";
 
 const userSchema = new mongoose.Schema(
-  {
-    fullName: {
+  { 
+    username: {
       type: String,
       required: true,
+      trim: true,
+      unique: true,
+      maxLength: 25,
+    },
+    fullname: {
+      type: String,
       trim: true,
       maxLength: 25,
     },

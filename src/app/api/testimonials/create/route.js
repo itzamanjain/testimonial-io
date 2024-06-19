@@ -1,8 +1,21 @@
 import { connectDb } from '../../../../dbconfig/dbConfig.js';
 import { NextRequest, NextResponse } from 'next/server';
-import Testimonial from '../../../../models/Testimonial'; // Ensure this is the correct path to your model
+import Testimonial from '../../../../models/testimonial.model.js'; // Ensure this is the correct path to your model
 
 connectDb();
+
+
+// test data
+//{
+//     "customerName": "John Doe",
+//     "customerPosition": "CEO",
+//     "customerCompany": "ACME Inc.",
+//     "customerSocialId": "john.doe@example.com",
+//     "customerReview": "John is an excellent leader and a pleasure to work with.",
+//     "testimonialGivenTo": "66713d188ec5def1a1861bfc"  // Or use the MongoDB _id if preferred
+// }
+
+
 
 // Logic to create a testimonial goes here
 export async function POST(request) {

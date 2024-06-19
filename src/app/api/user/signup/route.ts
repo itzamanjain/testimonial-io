@@ -6,11 +6,22 @@ import bcryptjs from 'bcryptjs';
 
 connectDb();
 
+// test data
+// {
+//     "fullname":"aman jain",
+//     "username":"itzaman",
+//     "email":"jain@gmial.com",
+//     "password":"aman123"
+// }
 
-export async function POST(req,res) {
+export async function POST(request: NextRequest) {
     try {
         const reqBody = await request.json();
-        const { email, fullname, password } = reqBody;
+        const { username,email, fullname, password } = reqBody;
+
+        if (!username || !email || !fullname || !password) {
+            return NextResponse.json({ message: 'Please fill in all fields' }, { status: 400 });
+        }
 
         const user = await User.findOne({ email });
 
@@ -23,7 +34,7 @@ export async function POST(req,res) {
         const hashedPassword = await bcryptjs.hash(password, salt);
 
 
-        const newUser = new User({ username, password: hashedPassword,email });
+        const newUser = new User({ username, password: hashedPassword,email, fullname});
 
         const savedUser = await newUser.save();
 
