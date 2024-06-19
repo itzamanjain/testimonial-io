@@ -1,9 +1,12 @@
 "use client"
 import React, { useState } from 'react';
 import axios from 'axios';
+import toast, { Toaster } from 'react-hot-toast';
+import { ClipLoader } from "react-spinners";
 
 function Page() {
   const [customerReviews, setCustomerReviews] = useState([]);
+  const [loading, setLoading] = useState(false);
   const [formData, setFormData] = useState({
     customerName: '',
     customerPosition: '',
@@ -14,10 +17,12 @@ function Page() {
   });
 
   const handleCustomerReviewSubmit = async (e) => {
-    e.preventDefault(); // Prevent default form submission
 
+    e.preventDefault(); // Prevent default form submission
+    setLoading(true); // Set loading state to true
     try {
       await axios.post('/api/testimonials/create', formData);
+      toast.success('Customer review submitted successfully!');
       // Add the submitted data to the customerReviews state
       setCustomerReviews([...customerReviews, formData]);
       console.log('customerReview submitted:', formData);
@@ -32,6 +37,9 @@ function Page() {
       });
     } catch (error) {
       console.error(error);
+      toast.error('Failed to submit customer review');
+    } finally {
+      setLoading(false); // Set loading state to false
     }
   };
 
@@ -107,16 +115,30 @@ function Page() {
           </div>
           <button
             type="submit"
-            className="px-4 py-2 bg-blue-600 text-white rounded-md shadow-sm hover:bg-blue-700"
+            className={`px-4 py-2 bg-blue-600 text-white rounded-md shadow-sm hover:bg-blue-700 ${!formData.customerName || !formData.customerPosition || !formData.customerCompany || !formData.customerReview || !formData.testimonialGivenTo ? 'cursor-not-allowed opacity-50' : ''}`}
+            disabled={!formData.customerName || !formData.customerPosition || !formData.customerCompany || !formData.customerReview || !formData.testimonialGivenTo}
+            onClick={(e) => {
+              if (!formData.customerName || !formData.customerPosition || !formData.customerCompany || !formData.customerReview || !formData.testimonialGivenTo) {
+                e.preventDefault();
+                alert("Please fill all details");
+              }
+            }}
           >
-            Submit
+            {loading ? (
+              <ClipLoader size={20} color="#ffffff" />
+            ) : (
+              "Submit Review"
+            )}
           </button>
+
+
         </form>
         {/* <div>
           {customerReviews.map((customerReview, index) => (
             <CustomerReviewCard key={index} {...customerReview} />
           ))}
         </div> */}
+        <Toaster />
       </div>
     </>
   );
