@@ -30,7 +30,7 @@ const Signup = () => {
     try {
       const response = await axios.post('/api/user/signup', formData);
       toast.success('User registered successfully!');
-      router.push('/login')
+      router.push('/signin')
       console.log(response.data); // handle success response
 
     } catch (error) {

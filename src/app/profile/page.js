@@ -2,12 +2,28 @@
 import axios from 'axios';
 import React, { useState, useEffect } from 'react';
 import TestimonialCard from '../../components/TestimonialCard'; // Adjust the path as per your file structure
+import toast, { Toaster } from 'react-hot-toast';
+import { useRouter } from 'next/navigation';
 
 function ProfilePage() {
+  const router = useRouter();
   const [user, setUser] = useState(null);
   const [testimonials, setTestimonials] = useState([]);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
+
+  const handleLogout = async () => {
+    try {
+      await axios.get('/api/user/logout');
+      toast.success('User logged out successfully!');
+      router.push('/signin');
+    } catch (error) {
+      toast.error('Failed to logout user!');
+      console.log('Error:', error.message);
+    }finally{
+      router.push('/signin');
+    }
+  }
 
   useEffect(() => {
     // Function to fetch user profile and testimonials
@@ -58,6 +74,7 @@ function ProfilePage() {
           <TestimonialCard key={testimonial._id} {...testimonial} />
         ))}
       </div>
+      <button onClick={handleLogout} className="px-4 py-2 bg-blue-600 text-white rounded-md shadow-sm hover:bg-blue-700">Logout</button>
     </div>
   );
 }
