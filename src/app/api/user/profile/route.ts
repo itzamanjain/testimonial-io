@@ -9,8 +9,8 @@ connectDb();
 export async function GET(request:NextRequest) {
   try {
     // Extract data from token
-    //const userId = await getDataFromToken(request);
-    const userId = "66713d188ec5def1a1861bfc"
+    const userId = await getDataFromToken(request);
+    //const userId = "66713d188ec5def1a1861bfc"
     if (!userId) {
       return NextResponse.json({ message: "Unauthorized access" }, { status: 401 });
     }
