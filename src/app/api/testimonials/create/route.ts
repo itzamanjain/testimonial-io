@@ -18,7 +18,7 @@ connectDb();
 
 
 // Logic to create a testimonial goes here
-export async function POST(request) {
+export async function POST(request:NextRequest) {
     try {
         const reqBody = await request.json();
 

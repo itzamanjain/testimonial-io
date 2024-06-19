@@ -27,14 +27,13 @@ const testimonialSchema = new mongoose.Schema(
     customerSocialId: {
       // LinkedIn, Twitter, Instagram, etc.
       type: String,
-      required: true,
       trim: true,
     },
     customerReview: {
       type: String,
       required: true,
       trim: true,
-      minLength: 5,
+      minLength: 4,
       maxLength: 255,
     },
     testimonialGivenTo: {
