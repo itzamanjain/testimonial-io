@@ -5,6 +5,7 @@ import axios from 'axios';
 import toast,{Toaster} from 'react-hot-toast';
 import { ClipLoader } from "react-spinners";
 import {useRouter} from 'next/navigation'
+import Link from 'next/link';
 
 const Signup = () => {
   const router = useRouter()
@@ -91,6 +92,12 @@ const Signup = () => {
             </button>
           </div>
         </form>
+        <div className="text-center">
+          <Link className="font-medium text-indigo-600 hover:text-indigo-500" href="/signup">
+            
+            Dont have an account ? Sign Up
+          </Link>
+          </div>
       </div>
       <Toaster />
     </div>
