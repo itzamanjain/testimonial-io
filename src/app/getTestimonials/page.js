@@ -13,7 +13,7 @@ function Page() {
     customerCompany: '',
     customerSocialId: '',
     customerReview: '',
-    testimonialGivenTo: '',
+    testimonialGivenTo: '66713d188ec5def1a1861bfc',
   });
 
   const handleCustomerReviewSubmit = async (e) => {
@@ -33,7 +33,7 @@ function Page() {
         customerCompany: '',
         customerSocialId: '',
         customerReview: '',
-        testimonialGivenTo: '',
+        testimonialGivenTo: '66713d188ec5def1a1861bfc',
       });
     } catch (error) {
       console.error(error);
@@ -52,11 +52,10 @@ function Page() {
 
   return (
     <>
-      <div>This is a page where users can submit customer reviews. give to 66713d188ec5def1a1861bfc</div>
-      <div className="min-h-screen bg-gray-900 text-white p-10">
-        <form onSubmit={handleCustomerReviewSubmit} className="space-y-4 mb-10">
+      <div className="min-h-screen bg-black text-white p-10 flex justify-center items-center">
+        <form onSubmit={handleCustomerReviewSubmit} className="space-y-4 mb-10 w-full max-w-lg">
           <div>
-            <label className="block text-sm font-medium text-gray-300">Customer Name</label>
+            <label className="block text-sm font-medium text-gray-300">Name</label>
             <input
               type="text"
               name="customerName"
@@ -66,7 +65,7 @@ function Page() {
             />
           </div>
           <div>
-            <label className="block text-sm font-medium text-gray-300">Customer Position</label>
+            <label className="block text-sm font-medium text-gray-300">Position</label>
             <input
               type="text"
               name="customerPosition"
@@ -76,7 +75,7 @@ function Page() {
             />
           </div>
           <div>
-            <label className="block text-sm font-medium text-gray-300">Customer Company</label>
+            <label className="block text-sm font-medium text-gray-300">Company</label>
             <input
               type="text"
               name="customerCompany"
@@ -96,19 +95,10 @@ function Page() {
             />
           </div>
           <div>
-            <label className="block text-sm font-medium text-gray-300">Customer Review</label>
+            <label className="block text-sm font-medium text-gray-300">Your Review</label>
             <textarea
               name="customerReview"
               value={formData.customerReview}
-              onChange={handleChange}
-              className="mt-1 block w-full bg-gray-700 border border-gray-600 rounded-md shadow-sm focus:border-blue-500 focus:ring focus:ring-blue-500 focus:ring-opacity-50"
-            />
-          </div>
-          <div>
-            <label className="block text-sm font-medium text-gray-300">Customer Review Given To</label>
-            <textarea
-              name="testimonialGivenTo"
-              value={formData.testimonialGivenTo}
               onChange={handleChange}
               className="mt-1 block w-full bg-gray-700 border border-gray-600 rounded-md shadow-sm focus:border-blue-500 focus:ring focus:ring-blue-500 focus:ring-opacity-50"
             />
@@ -130,16 +120,10 @@ function Page() {
               "Submit Review"
             )}
           </button>
-
-
         </form>
-        {/* <div>
-          {customerReviews.map((customerReview, index) => (
-            <CustomerReviewCard key={index} {...customerReview} />
-          ))}
-        </div> */}
         <Toaster />
       </div>
+
     </>
   );
 }
