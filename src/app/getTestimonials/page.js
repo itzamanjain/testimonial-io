@@ -22,7 +22,7 @@ function Page() {
     setLoading(true); // Set loading state to true
     try {
       await axios.post('/api/testimonials/create', formData);
-      toast.success('Customer review submitted successfully!');
+      toast.success('Your review submitted successfully!');
       // Add the submitted data to the customerReviews state
       setCustomerReviews([...customerReviews, formData]);
       console.log('customerReview submitted:', formData);

@@ -1,32 +1,35 @@
 "use client"
-import React from 'react'
-import { useRouter } from 'next/navigation'
+import React from 'react';
+import { useRouter } from 'next/navigation';
+import Test from '../components/Test';
 
 function Page() {
   const router = useRouter();
   return (
-    <>
-      <div className="flex flex-col md:flex-row justify-center px-4">
-        <h1 className="text-3xl md:text-6xl font-bold text-white text-center">
-          Collect Your
+    <div className="px-4 py-8 md:py-16">
+      <div className="text-center ">
+        <h1 className="text-3xl md:text-5xl font-bold text-white">
+          Collect Your{' '}
+          <span className="text-yellow-500">Testimonials</span> &{' '}
+          <span className="text-yellow-500">Integrate </span> <br />
+          <span>in </span>  Websites
         </h1>
-        <span className="text-3xl md:text-6xl font-bold bg-clip-text ml-0 md:ml-4 text-transparent bg-gradient-to-r from-gradient-start via-gradient-middle to-gradient-end text-center">
-          Testimonials
-        </span>
+        <p className="text-gray-300 mt-4">
+          Collect and display testimonials on your website to build trust with your audience.
+        </p>
       </div>
-      <div className="flex justify-center mt-5">
+      <div className="flex justify-center mt-8 ">
         <button
           type="button"
-          onClick={() => router.push('/getTestimonials')}
-          className="bg-blue-500 cursor-pointer hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
+          onClick={() => router.push('/signup')}
+          className="bg-yellow-800  hover:bg-yellow-500 text-white font-bold py-2 px-4 rounded cursor-pointer"
         >
-          Get Your Testimonials
+          Get Your First Testimonials
         </button>
       </div>
-      
-      
-    </>
-  )
+      <Test />
+    </div>
+  );
 }
 
-export default Page
+export default Page;

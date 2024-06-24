@@ -16,15 +16,18 @@ const Navbar = () => {
         <div className="flex items-center space-x-2">
           {/* <img src="/logo.svg" alt="Logo" className="h-8 w-8"/>
            */}
+          <Link href="/">
           <span className="font-bold text-black text-xl">EndorseCollect</span>
+        
+          </Link>
         </div>
         <div className="hidden md:flex space-x-8">
           <Link href="/about">
             <span className="text-gray-700 hover:text-gray-900 cursor-pointer">About</span>
           </Link>
           
-          <Link href="/customers">
-            <span className="text-gray-700 hover:text-gray-900 cursor-pointer">Customers</span>
+          <Link href="/contact">
+            <span className="text-gray-700 hover:text-gray-900 cursor-pointer">Contact</span>
           </Link>
           <Link href="/pricing">
             <span className="text-gray-700 hover:text-gray-900 cursor-pointer">Pricing</span>
@@ -49,8 +52,8 @@ const Navbar = () => {
             <span className="text-gray-700 hover:text-gray-900 cursor-pointer">About</span>
           </Link>
          
-          <Link href="/customers">
-            <span className="text-gray-700 hover:text-gray-900 cursor-pointer">Customers</span>
+          <Link href="/contact">
+            <span className="text-gray-700 hover:text-gray-900 cursor-pointer">Contact</span>
           </Link>
           <Link href="/pricing">
             <span className="text-gray-700 hover:text-gray-900 cursor-pointer">Pricing</span>
