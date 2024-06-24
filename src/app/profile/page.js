@@ -4,6 +4,7 @@ import React, { useState, useEffect } from 'react';
 import TestimonialCard from '../../components/TestimonialCard'; // Adjust the path as per your file structure
 import toast, { Toaster } from 'react-hot-toast';
 import { useRouter } from 'next/navigation';
+import Link from 'next/link';
 
 function ProfilePage() {
   const router = useRouter();
@@ -74,7 +75,15 @@ function ProfilePage() {
           <TestimonialCard key={testimonial._id} {...testimonial} />
         ))}
       </div>
-      <button onClick={handleLogout} className="px-4 py-2 bg-blue-600 text-white rounded-md shadow-sm hover:bg-blue-700">Logout</button>
+     
+      <button className='px-4 mt-10 py-2 bg-yellow-700 text-white rounded-md shadow-sm hover:bg-yellow-500'>
+      <Link  href='/getTestimonials'>Get Testimonials</Link>
+      
+      </button>
+      <br/>
+      <button onClick={handleLogout} className="px-4 mt-10 py-2 bg-red-600 text-white rounded-md shadow-sm hover:bg-red-700">Logout</button>
+    
+    
     </div>
   );
 }
