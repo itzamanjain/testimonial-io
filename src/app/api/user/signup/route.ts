@@ -6,13 +6,6 @@ import bcryptjs from 'bcryptjs';
 
 connectDb();
 
-// test data
-// {
-//     "fullname":"aman jain",
-//     "username":"itzaman",
-//     "email":"jain@gmial.com",
-//     "password":"aman123"
-// }
 
 export async function POST(request: NextRequest) {
     try {

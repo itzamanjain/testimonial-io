@@ -5,16 +5,6 @@ import Testimonial from '../../../../models/testimonial.model.js'; // Ensure thi
 connectDb();
 
 
-// test data
-//{
-//     "customerName": "John Doe",
-//     "customerPosition": "CEO",
-//     "customerCompany": "ACME Inc.",
-//     "customerSocialId": "john.doe@example.com",
-//     "customerReview": "John is an excellent leader and a pleasure to work with.",
-//     "testimonialGivenTo": "66713d188ec5def1a1861bfc"  // Or use the MongoDB _id if preferred
-// }
-
 
 
 // Logic to create a testimonial goes here

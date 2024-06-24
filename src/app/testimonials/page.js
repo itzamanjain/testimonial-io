@@ -8,8 +8,7 @@ import { ClipLoader } from "react-spinners";
 function Page() {
 
 
-    //http://localhost:3000/testimonials/submit?testimonialGivenTo=66713d188ec5def1a1861bfc
-
+   
 
     const UrltestimonialGivenTo = new URLSearchParams(window.location.search).get('testimonialGivenTo');
     console.log('testimonialGivenTo:', UrltestimonialGivenTo);

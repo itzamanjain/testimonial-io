@@ -5,6 +5,7 @@ import TestimonialCard from '../../components/TestimonialCard'; // Adjust the pa
 import toast, { Toaster } from 'react-hot-toast';
 import { useRouter } from 'next/navigation';
 import Link from 'next/link';
+import Image from 'next/image';
 
 function ProfilePage() {
   const router = useRouter();
@@ -53,14 +54,14 @@ function ProfilePage() {
   }
 
   return (
-    <div className="min-h-screen bg-gray-900 text-white p-10">
+    <div className="min-h-screen bg-black text-white p-10">
       <h1 className="text-3xl text-white text-center mb-5">Profile page</h1>
       {user && (
         <div className="bg-gray-800 p-5 rounded-lg mb-10">
           <div className="flex items-center">
             {/* Assuming you have a photo for the user */}
             <div className="w-20 h-20 rounded-full overflow-hidden mr-5">
-              <img src={user.photo} alt="User Photo" className="w-full h-full object-cover" />
+              <Image src="/vercel.svg" alt="User Photo" className="w-full h-full object-cover" width={40} height={50}/>
             </div>
             <div>
               <div className="text-2xl font-bold">{user.fullname}</div>

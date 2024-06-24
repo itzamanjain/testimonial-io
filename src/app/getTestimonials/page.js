@@ -1,45 +1,31 @@
 "use client"
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import axios from 'axios';
-import toast, { Toaster } from 'react-hot-toast';
-import { ClipLoader } from "react-spinners";
-import { getDataFromToken } from '../../helper/getDataFromToken';
 
-// Function to get user ID from token
-const getUserId = async () => {
-  const user = await getDataFromToken();
-  return user._id;
-}
+const Page = () => {
+  const [url, setUrl] = useState('');
 
-function Page() {
-  
-
-  const [userId, setUserId] = useState('');
-
-  useEffect(() => {
-    const fetchUserId = async () => {
-      const id = await getUserId();
-      setUserId(id);
+  const generateUrl = async () => {
+    try {
+      const response = await axios.get('api/testimonials/generateUrl');
+      setUrl(response.data.generatedUrl);
+      console.log('Generated URL:', url);
+    } catch (error) {
+      console.log('Error:', error.message);
     }
-    fetchUserId();
-  }, []);
+  };
 
-  
-
-  
-  const newuserId = '66713d188ec5def1a1861bfc';
   return (
-    
-    <>
-      <div className="min-h-screen bg-black text-white p-10 flex justify-center items-center">
-        
-        <button className='px-4 mt-10 py-2 bg-yellow-700 text-white rounded-md shadow-sm hover:bg-yellow-500'>
-          <a href={`http://localhost:3000/testimonials/submit/?testimonialGivenTo=${newuserId}`}>Ask for testimonial</a>
-        </button>
-      </div>
-
-    </>
+    <div className="flex justify-center items-center h-screen">
+      <button
+        className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
+        onClick={generateUrl}
+      >
+        Ask for Testimonials
+      </button>
+      {url && <h1 className="text-xl text-white ml-4">{url}</h1>}
+    </div>
   );
-}
+};
 
 export default Page;
