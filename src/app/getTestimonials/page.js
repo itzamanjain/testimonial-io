@@ -33,7 +33,7 @@ function Page() {
     <>
       <div className="min-h-screen bg-black text-white p-10 flex justify-center items-center">
         
-        <button>
+        <button className='px-4 mt-10 py-2 bg-yellow-700 text-white rounded-md shadow-sm hover:bg-yellow-500'>
           <a href={`http://localhost:3000/testimonials/submit/?testimonialGivenTo=${newuserId}`}>Ask for testimonial</a>
         </button>
       </div>
