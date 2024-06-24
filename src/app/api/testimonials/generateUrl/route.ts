@@ -13,7 +13,7 @@ export async function GET(request: NextRequest) {
             }, { status: 404 });
         }
 
-        const generatedUrl = `http://localhost:3000/testimonials?testimonialGivenTo=${userId}`;
+        const generatedUrl = `${process.env.WEBSITE_DOMAIN}/testimonials?testimonialGivenTo=${userId}`;
 
         return NextResponse.json({
             message: 'URL generated successfully',
