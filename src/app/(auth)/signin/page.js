@@ -120,7 +120,7 @@ const Signin = () => {
         </form>
         <div className="text-center">
           <Link className="font-medium text-indigo-400 hover:text-indigo-300 transition duration-150 ease-in-out" href="/signup">
-            Don't have an account? Sign Up
+            Don&apos;t have an account? Sign Up
           </Link>
         </div>
       </motion.div>
