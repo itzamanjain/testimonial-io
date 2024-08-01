@@ -12,7 +12,7 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
-      <body className="bg-black" >
+      <body className="bg-gradient-to-br from-gray-900 to-black">
         <Navbar />
         {children}</body>
     </html>

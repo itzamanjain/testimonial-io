@@ -61,7 +61,7 @@ function Page() {
 
     return (
         <>
-            <div className="min-h-screen bg-black text-white p-10 flex justify-center items-center">
+            <div className="min-h-screen bg-gradient-to-br from-gray-900 to-black text-white p-10 flex justify-center items-center">
                 <form onSubmit={handleCustomerReviewSubmit} className="space-y-4 mb-10 w-full max-w-lg">
                     <div>
                         <label className="block text-sm font-medium text-gray-300">Name</label>
@@ -222,7 +222,7 @@ export default Page;
 
 //     return (
 //         <>
-//             <div className="min-h-screen bg-black text-white p-10 flex justify-center items-center">
+//             <div className="min-h-screen bg-gradient-to-br from-gray-900 to-black text-white p-10 flex justify-center items-center">
 //             <form onSubmit={handleCustomerReviewSubmit} className="space-y-4 mb-10 w-full max-w-lg">
 //                 <div>
 //                     <label className="block text-sm font-medium text-gray-300">Name</label>

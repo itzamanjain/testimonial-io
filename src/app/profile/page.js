@@ -54,7 +54,7 @@ function ProfilePage() {
   }
 
   return (
-    <div className="min-h-screen bg-black text-white p-10">
+    <div className="min-h-screen bg-gradient-to-br from-gray-900 to-black text-white p-10">
       <h1 className="text-3xl text-white text-center mb-5">Profile page</h1>
       {user && (
         <div className="bg-gray-800 p-5 rounded-lg mb-10">

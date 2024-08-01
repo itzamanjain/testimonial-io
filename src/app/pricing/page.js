@@ -5,7 +5,7 @@ import { useRouter } from 'next/navigation';
 function PricingPage() {
   const router = useRouter();
   return (
-    <div className="min-h-screen bg-black p-10 flex flex-col items-center">
+    <div className="min-h-screen bg-gradient-to-br from-gray-900 to-black p-10 flex flex-col items-center">
       <h1 className="text-4xl font-bold text-white mb-10">Pricing Plans</h1>
       <div className="flex flex-col md:flex-row gap-10">
         <div className="bg-white shadow-lg rounded-lg p-6 w-full md:w-1/3 text-center">

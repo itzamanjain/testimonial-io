@@ -35,7 +35,7 @@ const Navbar = () => {
         </div>
         <div className="hidden md:block">
           <Link href="/signin">
-            <button className="bg-black text-white px-4 py-2 rounded-full hover:bg-gray-800">
+            <button className="bg-gradient-to-br from-gray-900 to-black text-white px-4 py-2 rounded-full hover:bg-gray-800">
               Login
             </button>
           </Link>
@@ -59,7 +59,7 @@ const Navbar = () => {
             <span className="text-gray-700 hover:text-gray-900 cursor-pointer">Pricing</span>
           </Link>
           <Link href="/signin">
-            <button className="bg-black text-white px-4 py-2 rounded-full hover:bg-gray-800">
+            <button className="bg-gradient-to-br from-gray-900 to-black text-white px-4 py-2 rounded-full hover:bg-gray-800">
               Login
             </button>
           </Link>
