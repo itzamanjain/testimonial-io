@@ -1,3 +1,4 @@
+import Link from 'next/link';
 import React from 'react';
 
 function Page() {
@@ -12,9 +13,12 @@ function Page() {
         <div className="max-w-2xl text-2xl text-center italic font-light">
           &quot;We are in our sultry startup phase, working tirelessly to perfect your experience. Stay tuned for a platform that will make your testimonials too hot to handle.&quot;
         </div>
+        
+        <Link href='signup'>
         <button className="mt-12 px-8 py-3 bg-gradient-to-r from-pink-500 to-purple-600 text-white font-bold rounded-full hover:from-pink-600 hover:to-purple-700 transition duration-300 ease-in-out transform hover:scale-105">
           Get Started
         </button>
+        </Link>
       </div>
     </>
   );
