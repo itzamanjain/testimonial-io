@@ -82,7 +82,7 @@ function ProfilePage() {
   <div className="bg-gray-800 p-6 rounded-lg shadow-lg mb-10">
     <div className="flex items-center space-x-6">
       <div className="relative">
-        <Image src="/testimonial.png" alt="User Photo" width={80} height={80} className="rounded-full border-4 border-gray-700" />
+        <Image src={user?.avatarUrl} alt="User Photo" width={150} height={150} className="rounded-full border-4 border-gray-700" />
       </div>
       <div className="flex-grow">
         <h3 className="text-3xl font-bold text-white">{user.fullname}</h3>

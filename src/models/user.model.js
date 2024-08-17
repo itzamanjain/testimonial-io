@@ -1,4 +1,5 @@
 import mongoose from "mongoose";
+import { type } from "os";
 
 const userSchema = new mongoose.Schema(
   { 
@@ -20,6 +21,10 @@ const userSchema = new mongoose.Schema(
       trim: true,
       unique: true,
       match: [/.+\@.+\..+/, "Please fill a valid email address"],
+    },
+    avatarUrl:{
+      type: String,
+      required: true,
     },
     password: {
       type: String,
