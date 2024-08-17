@@ -6,8 +6,8 @@ import Image from 'next/image';
 
 function Page() {
   return (
-   <>
-       <div className="min-h-screen bg-gradient-to-br from-gray-900 to-black px-4 py-12 md:py-24">
+   <div className='min-h-screen bg-gradient-to-br from-gray-900 to-black'>
+       <div className="min-h-screen  px-4 py-12 md:py-24">
       {/* Hero Section */}
       <div className="text-center max-w-4xl mx-auto">
         <h1 className="text-4xl md:text-6xl font-bold text-white leading-tight">
@@ -107,23 +107,23 @@ function Page() {
       
 
     </div>
-    <div className="mt-32 text-center py-12 bg-gray-950 ">
+    <div className=" text-center py-12  ">
     <p className="text-gray-500">
       &copy; {new Date().getFullYear()} Endorse Collect. All rights reserved.
     </p>
     <div className="mt-4 flex justify-center space-x-6">
-      <a href="/terms" className="text-gray-500 hover:text-gray-400">
+      <a href="/" className="text-gray-500 hover:text-gray-400">
         Terms of Service
       </a>
-      <a href="/privacy" className="text-gray-500 hover:text-gray-400">
+      <a href="/" className="text-gray-500 hover:text-gray-400">
         Privacy Policy
       </a>
-      <a href="/contact" className="text-gray-500 hover:text-gray-400">
+      <a href="/" className="text-gray-500 hover:text-gray-400">
         Contact Us
       </a>
     </div>
   </div>
-   </>
+   </div>
   );
 }
 
