@@ -8,6 +8,7 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { motion } from 'framer-motion';
 import { FaUserCircle, FaEnvelope, FaSignOutAlt, FaExternalLinkAlt } from 'react-icons/fa';
+import {FaFacebook,FaLinkedinIn,FaTwitter} from 'react-icons/fa';
 
 function ProfilePage() {
   const router = useRouter();
@@ -54,7 +55,7 @@ function ProfilePage() {
 
   if (loading) {
     return (
-      <div className="min-h-screen flex justify-center items-center bg-gradient-to-br from-purple-900 via-indigo-900 to-blue-900">
+      <div className="min-h-screen flex justify-center items-center bg-gradient-to-br from-gray-900 to-black">
         <div className="animate-spin rounded-full h-32 w-32 border-t-2 border-b-2 border-white"></div>
       </div>
     );
@@ -72,21 +73,36 @@ function ProfilePage() {
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-gray-900 to-black text-white p-6 md:p-10">
-      
+
 
       <h2 className="text-3xl font-bold text-center mb-8">Your Profile</h2>
-
       {user && (
-        <div className="bg-gray-800 p-6 rounded-lg shadow-lg mb-10">
-          <div className="flex items-center space-x-4">
-            <Image src="/testimonial.png" alt="User Photo" width={80} height={80} className="rounded-full" />
-            <div>
-              <h3 className="text-2xl font-semibold">{user.fullname}</h3>
-              <p className="text-gray-400">{user.email}</p>
-            </div>
-          </div>
+  <div className="bg-gray-800 p-6 rounded-lg shadow-lg mb-10">
+    <div className="flex items-center space-x-6">
+      <div className="relative">
+        <Image src="/testimonial.png" alt="User Photo" width={80} height={80} className="rounded-full border-4 border-gray-700" />
+      </div>
+      <div className="flex-grow">
+        <h3 className="text-3xl font-bold text-white">{user.fullname}</h3>
+        <p className="text-gray-400 mt-1">{user.email}</p>
+        <div className="flex items-center space-x-4 mt-3">
+          <FaFacebook className="text-blue-500 text-2xl hover:scale-110 transition-transform duration-200" />
+          <FaLinkedinIn className="text-blue-700 text-2xl hover:scale-110 transition-transform duration-200" />
+          <FaTwitter className="text-blue-400 text-2xl hover:scale-110 transition-transform duration-200" />
         </div>
-      )}
+      </div>
+    </div>
+  </div>
+)}
+
+
+      <div className="flex justify-center space-x-4">
+        <Link href="/getTestimonials">
+          <button className="px-6 py-3 mb-5 bg-green-600 text-white rounded-md hover:bg-green-700 transition duration-300">
+            Get Testimonials
+          </button>
+        </Link>
+      </div>
 
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-10">
         {testimonials.map((testimonial) => (
@@ -102,14 +118,8 @@ function ProfilePage() {
         ))}
       </div>
 
-      <div className="flex justify-center space-x-4">
-        <Link href="/getTestimonials">
-          <button className="px-6 py-3 bg-green-600 text-white rounded-md hover:bg-green-700 transition duration-300">
-            Get Testimonials
-          </button>
-        </Link>
-      </div>
-      
+
+
       <Toaster />
     </div>
   );
