@@ -1,15 +1,53 @@
 import { connectDb } from '../../../../dbconfig/dbConfig.js';
 import { NextRequest, NextResponse } from 'next/server';
 import Testimonial from '../../../../models/testimonial.model.js'; 
+import { v2 as cloudinary } from 'cloudinary';
+import streamifier from 'streamifier';
+
+
+
+cloudinary.config({
+    cloud_name: process.env.CLOUDINARY_CLOUD_NAME,
+    api_key: process.env.CLOUDINARY_API_KEY,
+    api_secret: process.env.CLOUDINARY_API_SECRET,
+    secure: true,
+  });
+
+
+
 
 connectDb();
+
+
+
+
+// Upload image to Cloudinary with circular transformation
+const uploadAvatar = (buffer: Buffer) => {
+    return new Promise((resolve, reject) => {
+      const uploadStream = cloudinary.uploader.upload_stream({
+        transformation: [
+          { width: 400, height: 400, crop: 'thumb', gravity: 'face' }, // crop to a square centered on the face
+          { radius: 'max' }, // apply maximum corner rounding to make it circular
+        ],
+      }, (error, result) => {
+        if (result) {
+          resolve(result.secure_url);
+        } else {
+          reject(error);
+        }
+      });
+  
+      streamifier.createReadStream(buffer).pipe(uploadStream);
+    });
+  };
+
 
 // In-memory store for tracking requests
 const rateLimitStore = new Map();
 const RATE_LIMIT_TIME_FRAME = 15 * 60 * 1000; // 15 minutes
-const RATE_LIMIT_MAX_REQUESTS = 3; // Max 3 requests per IP per time frame
+const RATE_LIMIT_MAX_REQUESTS = 13; // Max 3 requests per IP per time frame
 
-function rateLimit(request) {
+function rateLimit(request:NextRequest) {
     const ip = request.headers.get('x-forwarded-for') || request.ip ;
     console.log('IP:', ip);
     
@@ -46,13 +84,43 @@ export async function POST(request: NextRequest) {
             }, { status: 429 });
         }
 
-        const reqBody = await request.json();
+        // const reqBody = await request.json();
 
-        const { customerName, customerPosition, customerCompany, customerSocialId, customerReview, testimonialGivenTo } = reqBody;
+        // const { customerName, customerPosition, customerCompany, customerSocialId, customerReview, testimonialGivenTo } = reqBody;
+
+        // if (!customerName || !customerPosition || !customerCompany || !customerSocialId || !customerReview || !testimonialGivenTo) {
+        //     return NextResponse.json({ message: "Please fill all fields" }, { status: 400 });
+        // }
+
+
+        const data = await request.formData();
+        console.log(data);
+        
+        if(!data){
+            return NextResponse.json({message:'Please provide required field '},{status:400});
+
+        }
+
+        const avatar = data.get('avatar') as File;
+        const customerName = data.get('customerName');
+        const customerPosition = data.get('customerPosition');
+        const customerCompany = data.get('customerCompany');
+        const customerSocialId = data.get('customerSocialId');
+        const customerReview = data.get('customerReview');
+        const testimonialGivenTo = data.get('testimonialGivenTo');
+
 
         if (!customerName || !customerPosition || !customerCompany || !customerSocialId || !customerReview || !testimonialGivenTo) {
-            return NextResponse.json({ message: "Please fill all fields" }, { status: 400 });
-        }
+                 return NextResponse.json({ message: "Please fill all fields" }, { status: 400 });
+         }
+
+         
+         
+        const buffer = Buffer.from(await avatar.arrayBuffer());
+
+        const avatarUrl = await uploadAvatar(buffer);
+        console.log("uploaded avatar url ",avatarUrl);
+        
 
         // Create a new testimonial
         const newTestimonial = new Testimonial({
@@ -61,7 +129,8 @@ export async function POST(request: NextRequest) {
             customerCompany,
             customerSocialId,
             customerReview,
-            testimonialGivenTo
+            testimonialGivenTo,
+            avatarUrl
         });
 
         // Save the testimonial

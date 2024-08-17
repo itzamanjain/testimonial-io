@@ -1,7 +1,7 @@
 "use client"
 import axios from 'axios';
 import React, { useState, useEffect } from 'react';
-import TestimonialCard from '../../components/TestimonialCard';
+import TestimonialCard from '../../../components/TestimonialCard';
 import toast, { Toaster } from 'react-hot-toast';
 import { useRouter } from 'next/navigation';
 import Link from 'next/link';
@@ -35,6 +35,8 @@ function ProfilePage() {
       setLoading(true);
       try {
         const response = await axios.get('/api/user/profile');
+        console.log(response);
+        
         setUser(response.data.user);
         setTestimonials(response.data.testimonials);
         setLoading(false);
@@ -63,7 +65,7 @@ function ProfilePage() {
 
   if (error) {
     return (
-      <div className="min-h-screen flex justify-center items-center bg-gradient-to-br from-purple-900 via-indigo-900 to-blue-900">
+      <div className="min-h-screen flex justify-center items-center bg-gradient-to-br from-gray-900  to-black">
         <div className="bg-red-600 text-white p-4 rounded-lg shadow-lg">
           Error: {error.message}
         </div>

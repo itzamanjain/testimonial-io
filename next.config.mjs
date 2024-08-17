@@ -1,5 +1,5 @@
 /** @type {import('next').NextConfig} */
 export const images = {
-    domains: ['randomuser.me'],
+    domains: ['randomuser.me','res.cloudinary.com'],
 };
   

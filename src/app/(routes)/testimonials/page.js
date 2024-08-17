@@ -14,7 +14,8 @@ function Page() {
         customerCompany: '',
         customerSocialId: '',
         customerReview: '',
-        testimonialGivenTo: ''
+        testimonialGivenTo: '',
+        avatar: null // Update avatar to be null initially
     });
 
     useEffect(() => {
@@ -28,17 +29,34 @@ function Page() {
     }, []);
 
     const handleChange = (e) => {
-        setFormData({
-            ...formData,
-            [e.target.name]: e.target.value,
-        });
+        const { name, value, files } = e.target;
+        if (name === "avatar") {
+            setFormData({
+                ...formData,
+                avatar: files[0], // Update avatar state with the selected file
+            });
+        } else {
+            setFormData({
+                ...formData,
+                [name]: value,
+            });
+        }
     };
 
     const handleCustomerReviewSubmit = async (e) => {
         e.preventDefault(); // Prevent default form submission
         setLoading(true); // Set loading state to true
         try {
-            await axios.post('/api/testimonials/create', formData);
+            const submitData = new FormData();
+            Object.keys(formData).forEach(key => {
+                submitData.append(key, formData[key]);
+            });
+
+            await axios.post('/api/testimonials/create', submitData, {
+                headers: {
+                    'Content-Type': 'multipart/form-data'
+                }
+            });
             toast.success('Your review submitted successfully!');
             // Add the submitted data to the customerReviews state
             setCustomerReviews([...customerReviews, formData]);
@@ -51,6 +69,7 @@ function Page() {
                 customerSocialId: '',
                 customerReview: '',
                 testimonialGivenTo: '',
+                avatar: null
             });
         } catch (error) {
             console.error(error);
@@ -99,6 +118,16 @@ function Page() {
                             )}
                         </motion.div>
                     ))}
+                    <motion.div whileHover={{ scale: 1.02 }} whileTap={{ scale: 0.98 }}>
+                        <label className="block text-sm font-medium text-blue-300 mb-1">Upload Avatar</label>
+                        <input
+                            type="file"
+                            name="avatar"
+                            accept="image/*"
+                            onChange={handleChange}
+                            className="w-full bg-white/5 border border-blue-500/30 rounded-md shadow-sm focus:border-blue-500 focus:ring focus:ring-blue-500 focus:ring-opacity-50 transition duration-200 ease-in-out p-2 text-white"
+                        />
+                    </motion.div>
                     <motion.button
                         type="submit"
                         className={`w-full px-4 py-2 bg-blue-600 text-white rounded-md shadow-md hover:bg-blue-700 transition duration-200 ease-in-out ${!formData.customerName || !formData.customerPosition || !formData.customerCompany || !formData.customerReview ? 'cursor-not-allowed opacity-50' : ''}`}
@@ -127,4 +156,3 @@ function Page() {
 }
 
 export default Page;
-

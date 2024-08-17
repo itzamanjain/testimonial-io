@@ -1,8 +1,16 @@
 import React from 'react';
 import Image from 'next/image';
 import { motion } from 'framer-motion';
+import axios from 'axios';
+import {FaPen} from 'react-icons/fa'
 
-function TestimonialCard({ customerName, customerCompany, customerSocialId, customerReview, customerPosition, customerImage }) {
+function TestimonialCard({ customerName, customerCompany, customerSocialId, customerReview, customerPosition, avatarUrl }) {
+  
+  const handleDelete = async ({userId,testimonialId}) => {
+    const res = await axios.delete('/api/testimonials/delete',{userId,testimonialId})
+
+  }
+  
   return (
     <motion.div 
       whileHover={{ scale: 1.05 }}
@@ -11,13 +19,11 @@ function TestimonialCard({ customerName, customerCompany, customerSocialId, cust
     >
       <div className="flex items-center space-x-4 mb-4">
         <motion.div 
-          whileHover={{ rotate: 360 }}
-          transition={{ duration: 0.5 }}
           className="flex-shrink-0 relative"
         >
           <Image 
             className="object-cover rounded-full border-2 border-gray-300 shadow-sm" 
-            src={customerImage || "/testimonial.png"} 
+            src={avatarUrl || "/testimonial.png"} 
             width={80} 
             height={80} 
             alt={customerName} 
