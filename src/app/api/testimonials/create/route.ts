@@ -84,14 +84,7 @@ export async function POST(request: NextRequest) {
             }, { status: 429 });
         }
 
-        // const reqBody = await request.json();
-
-        // const { customerName, customerPosition, customerCompany, customerSocialId, customerReview, testimonialGivenTo } = reqBody;
-
-        // if (!customerName || !customerPosition || !customerCompany || !customerSocialId || !customerReview || !testimonialGivenTo) {
-        //     return NextResponse.json({ message: "Please fill all fields" }, { status: 400 });
-        // }
-
+        
 
         const data = await request.formData();
         console.log(data);
@@ -108,9 +101,10 @@ export async function POST(request: NextRequest) {
         const customerSocialId = data.get('customerSocialId');
         const customerReview = data.get('customerReview');
         const testimonialGivenTo = data.get('testimonialGivenTo');
+        const rating = data.get('rating');
 
 
-        if (!customerName || !customerPosition || !customerCompany || !customerSocialId || !customerReview || !testimonialGivenTo) {
+        if (!customerName || !rating || !customerPosition || !customerCompany || !customerSocialId || !customerReview || !testimonialGivenTo) {
                  return NextResponse.json({ message: "Please fill all fields" }, { status: 400 });
          }
 
@@ -130,7 +124,8 @@ export async function POST(request: NextRequest) {
             customerSocialId,
             customerReview,
             testimonialGivenTo,
-            avatarUrl
+            avatarUrl,
+            rating
         });
 
         // Save the testimonial

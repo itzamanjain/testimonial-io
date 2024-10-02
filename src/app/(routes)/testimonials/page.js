@@ -15,6 +15,7 @@ function Page() {
         customerSocialId: '',
         customerReview: '',
         testimonialGivenTo: '',
+        rating: '',
         avatar: null // Update avatar to be null initially
     });
 
@@ -69,6 +70,7 @@ function Page() {
                 customerSocialId: '',
                 customerReview: '',
                 testimonialGivenTo: '',
+                rating: '',
                 avatar: null
             });
         } catch (error) {
@@ -124,6 +126,16 @@ function Page() {
                             type="file"
                             name="avatar"
                             accept="image/*"
+                            onChange={handleChange}
+                            className="w-full bg-white/5 border border-blue-500/30 rounded-md shadow-sm focus:border-blue-500 focus:ring focus:ring-blue-500 focus:ring-opacity-50 transition duration-200 ease-in-out p-2 text-white"
+                        />
+                        <label>Rating</label>
+                        <input
+                            type="number"
+                            name="rating"
+                            min="1"
+                            max="5"
+                            value={formData.rating}
                             onChange={handleChange}
                             className="w-full bg-white/5 border border-blue-500/30 rounded-md shadow-sm focus:border-blue-500 focus:ring focus:ring-blue-500 focus:ring-opacity-50 transition duration-200 ease-in-out p-2 text-white"
                         />

@@ -36,6 +36,13 @@ const testimonialSchema = new mongoose.Schema(
       minLength: 4,
       maxLength: 255,
     },
+    rating:{
+      type:Number,
+      required:true,
+      min:1,
+      max:5,
+    },
+    
     testimonialGivenTo: {
       type: mongoose.Schema.Types.ObjectId,
       ref: "User",
