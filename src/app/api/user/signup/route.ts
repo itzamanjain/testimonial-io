@@ -5,6 +5,7 @@ import bcryptjs from 'bcryptjs';
 
 import { v2 as cloudinary } from 'cloudinary';
 import streamifier from 'streamifier';
+import { uploadAvatar } from '../../../../lib/cloudinary.js';
 
 
 
@@ -23,24 +24,24 @@ connectDb();
 
 
 // Upload image to Cloudinary with circular transformation
-const uploadAvatar = (buffer: Buffer) => {
-    return new Promise((resolve, reject) => {
-      const uploadStream = cloudinary.uploader.upload_stream({
-        transformation: [
-          { width: 400, height: 400, crop: 'thumb', gravity: 'face' }, // crop to a square centered on the face
-          { radius: 'max' }, // apply maximum corner rounding to make it circular
-        ],
-      }, (error, result) => {
-        if (result) {
-          resolve(result.secure_url);
-        } else {
-          reject(error);
-        }
-      });
+// const uploadAvatar = (buffer: Buffer) => {
+//     return new Promise((resolve, reject) => {
+//       const uploadStream = cloudinary.uploader.upload_stream({
+//         transformation: [
+//           { width: 400, height: 400, crop: 'thumb', gravity: 'face' }, // crop to a square centered on the face
+//           { radius: 'max' }, // apply maximum corner rounding to make it circular
+//         ],
+//       }, (error, result) => {
+//         if (result) {
+//           resolve(result.secure_url);
+//         } else {
+//           reject(error);
+//         }
+//       });
   
-      streamifier.createReadStream(buffer).pipe(uploadStream);
-    });
-  };
+//       streamifier.createReadStream(buffer).pipe(uploadStream);
+//     });
+//   };
 
 
 
@@ -72,6 +73,7 @@ export async function POST(request: NextRequest) {
         
         const buffer = Buffer.from(await avatar.arrayBuffer());
 
+        // const avatarUrl = await uploadAvatar(buffer);
         const avatarUrl = await uploadAvatar(buffer);
         console.log("uploaded avatar url ",avatarUrl);
         
