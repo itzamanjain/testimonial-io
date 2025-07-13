@@ -1,56 +1,32 @@
-import React from 'react';
-import Image from 'next/image';
-import { motion } from 'framer-motion';
-import axios from 'axios';
-import {FaPen, FaStar} from 'react-icons/fa'
+import { Star } from "lucide-react"
+import Image from "next/image"
 
-function TestimonialCard({ customerName, customerCompany, customerSocialId, customerReview, customerPosition, avatarUrl ,rating}) {
-  
-  const handleDelete = async ({userId,testimonialId}) => {
-    const res = await axios.delete('/api/testimonials/delete',{userId,testimonialId})
-
-  }
-  
-  return (<motion.div 
-    whileHover={{ scale: 1.05 }}
-    transition={{ duration: 0.3 }}
-    className="bg-white w-full p-6 max-w-md mx-auto rounded-2xl shadow-lg overflow-hidden border border-gray-200"
-  >
-    <div className="flex items-center space-x-6 mb-6">
-      <motion.div 
-        className="flex-shrink-0 relative"
-        whileHover={{ scale: 1.1 }}
-      >
-        <Image 
-          className="object-cover rounded-full border-4 border-yellow-400 shadow-lg" 
-          src={avatarUrl || "/testimonial.png"} 
-          width={80} 
-          height={80} 
-          alt={customerName} 
+const TestimonialCard = ({ customerName, customerPosition, customerCompany, customerReview, rating, avatarUrl }) => {
+  return (
+    <div className="p-6">
+      <div className="flex items-start space-x-4 mb-4">
+        <Image
+          src={avatarUrl || "/placeholder.svg?height=48&width=48"}
+          alt={`${customerName}'s Avatar`}
+          width={48}
+          height={48}
+          className="rounded-full object-cover"
         />
-      </motion.div>
-      <div>
-        <h3 className="text-lg font-semibold text-gray-900">{customerName}</h3>
-        <p className="text-gray-500 text-md ">{customerPosition} at {customerCompany}</p>
-        <p className="text-gray-400 text">@{customerSocialId}</p>
+        <div>
+          <h4 className="text-lg font-semibold text-white">{customerName}</h4>
+          <p className="text-sm text-gray-400">
+            {customerPosition}, {customerCompany}
+          </p>
+          <div className="flex items-center mt-1">
+            {[...Array(5)].map((_, index) => (
+              <Star key={index} className={`h-4 w-4 ${index < rating ? "text-yellow-400" : "text-gray-500"}`} />
+            ))}
+          </div>
+        </div>
       </div>
+      <p className="text-gray-300">{customerReview}</p>
     </div>
-    <div className="mt-4">
-      <p className="text-gray-600 text leading-relaxed">&ldquo;{customerReview}&rdquo;</p>
-    </div>
-    <div className="mt-6 flex justify-between items-center">
-      
-      <motion.div 
-        whileHover={{ scale: 1.2 }}
-        className="text-yellow-500  flex space-x-1"
-      >
-        {rating && [...Array(rating)].map((_, i) => (
-          <FaStar key={i} />
-        ))}
-      </motion.div>
-    </div>
-  </motion.div>
-    );
+  )
 }
 
-export default TestimonialCard;
+export default TestimonialCard
