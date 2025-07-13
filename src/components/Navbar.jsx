@@ -22,10 +22,7 @@ const Navbar = () => {
           </Link>
         </div>
         <div className="hidden md:flex space-x-8">
-          <Link href="/about">
-            <span className="text-gray-700 hover:text-gray-900 cursor-pointer">About</span>
-          </Link>
-          
+         
           <Link href="/pricing">
             <span className="text-gray-700 hover:text-gray-900 cursor-pointer">Pricing</span>
           </Link>
@@ -45,13 +42,7 @@ const Navbar = () => {
       </div>
       {isOpen && (
         <div className="md:hidden flex flex-col space-y-4 mt-4">
-          <Link href="/about">
-            <span className="text-gray-700 hover:text-gray-900 cursor-pointer">About</span>
-          </Link>
          
-          <Link href="/contact">
-            <span className="text-gray-700 hover:text-gray-900 cursor-pointer">Contact</span>
-          </Link>
           <Link href="/pricing">
             <span className="text-gray-700 hover:text-gray-900 cursor-pointer">Pricing</span>
           </Link>

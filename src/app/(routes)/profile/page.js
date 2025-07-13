@@ -223,11 +223,6 @@ function ProfilePage() {
     setFilteredTestimonials(filtered)
   }, [testimonials, searchTerm, sortBy])
 
-  const generateEmbedCode = (testimonialId) => {
-    const embedCode = `<iframe src="${process.env.NEXT_PUBLIC_BASE_URL}/embed/testimonial/${testimonialId}" width="100%" height="200" frameborder="0"></iframe>`
-    navigator.clipboard.writeText(embedCode)
-    toast.success("Embed code copied to clipboard!")
-  }
 
   const shareProfile = async () => {
     const profileUrl = `${window.location.origin}/profile/${user?.username || user?._id}`
@@ -257,7 +252,7 @@ function ProfilePage() {
 
   if (loading) {
     return (
-      <div className="min-h-screen bg-gradient-to-br from-gray-900 via-blue-900/20 to-black text-white">
+      <div className="min-h-screen bg-black text-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
           <div className="text-center mb-12">
             <div className="h-12 bg-gray-700 rounded w-64 mx-auto animate-pulse"></div>
