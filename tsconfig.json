@@ -30,7 +30,7 @@
     ".next/types/**/*.ts",
     "**/*.ts",
     "**/*.tsx"
-, "tailwind.config.js", "src/app/(routes)/edit-profile/page.js"  ],
+, "tailwind.config.js", "src/app/(routes)/edit-profile/page.js", "src/lib/cloudinary.js"  ],
   "exclude": [
     "node_modules"
   ]

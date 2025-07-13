@@ -3,10 +3,12 @@ import React from 'react';
 import Test from '../components/Test';
 import Link from 'next/link';
 import Image from 'next/image';
+import Navbar from '@/components/Navbar';
 
 function Page() {
   return (
-   <div className='min-h-screen bg-gradient-to-br from-gray-900 to-black'>
+   <div className='min-h-screen bg-gradient-to-br p-8 from-gray-900 to-black'>
+     <Navbar />
        <div className="min-h-screen  px-4 py-12 md:py-24">
       {/* Hero Section */}
       <div className="text-center max-w-4xl mx-auto">

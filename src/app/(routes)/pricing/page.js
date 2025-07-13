@@ -1,40 +1,72 @@
 "use client"
-import React from 'react';
-import { useRouter } from 'next/navigation';
+import React from 'react'
+import { PricingCard } from "@/components/ui/dark-gradient-pricing"
+import Navbar from '@/components/Navbar'
 
-function PricingPage() {
-  const router = useRouter();
+
+const page = () => {
   return (
-    <div className="min-h-screen bg-gradient-to-br from-gray-900 to-black p-10 flex flex-col items-center">
-      <h1 className="text-5xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-indigo-400 to-cyan-400 mb-16">Choose Your Plan</h1>
-      <div className="flex flex-col md:flex-row gap-10">
-        {[
-          { title: "Basic", price: "Free", features: ["Collect unlimited testimonials", "Display testimonials on website", "Basic analytics", "Community support"], action: "Sign Up", route: '/signup' },
-          { title: "Pro", price: "Pro", features: ["All Basic features", "Advanced analytics", "Custom branding", "Priority support"], action: "Get Started", route: '/signup' },
-          { title: "Enterprise", price: "Custom", features: ["All Pro features", "Dedicated account manager", "Custom integrations", "24/7 VIP support"], action: "Contact Sales", route: '/contact' },
-        ].map((plan, index) => (
-          <div key={index} className="bg-gradient-to-br from-gray-800 to-black shadow-lg rounded-2xl p-8 w-full md:w-1/3 text-center transform transition duration-500 hover:scale-105 hover:shadow-2xl">
-            <h2 className="text-3xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-indigo-400 to-cyan-400 mb-4">{plan.title}</h2>
-            <p className="text-cyan-300 mb-6 text-xl">{plan.price}</p>
-            <ul className="text-gray-300 mb-8">
-              {plan.features.map((feature, i) => (
-                <li key={i} className="mb-3 flex items-center justify-center">
-                  <span className="text-indigo-400 mr-2">✓</span> {feature}
-                </li>
-              ))}
-            </ul>
-            <button
-              type="button"
-              onClick={() => router.push(plan.route)}
-              className="bg-gradient-to-r from-indigo-500 to-cyan-500 text-white font-bold py-3 px-6 rounded-lg hover:from-indigo-600 hover:to-cyan-600 transition duration-300 ease-in-out transform hover:scale-105"
-            >
-              {plan.action}
-            </button>
-          </div>
-        ))}
+      <section className="relative overflow-hidden p-8 bg-background text-foreground">
+        <Navbar />
+      <div className="relative z-10 mx-auto max-w-5xl px-4 py-20 md:px-8">
+        <div className="mb-12 space-y-3">
+          <h2 className="text-center text-3xl font-semibold leading-tight sm:text-4xl sm:leading-tight md:text-5xl md:leading-tight">
+            Pricing
+          </h2>
+          <p className="text-center text-base text-muted-foreground md:text-lg">
+            Use it for free for yourself, upgrade when your team needs advanced
+            control.
+          </p>
+        </div>
+        <div className="grid grid-cols-1 gap-6 md:grid-cols-3">
+          <PricingCard
+            tier="Free"
+            price="$0/mo"
+            bestFor="Best for 1-5 users"
+            CTA="Get started free"
+            benefits={[
+              { text: "One workspace", checked: true },
+              { text: "Email support", checked: true },
+              { text: "1 day data retention", checked: false },
+              { text: "Custom roles", checked: false },
+              { text: "Priority support", checked: false },
+              { text: "SSO", checked: false },
+            ]}
+          />
+          <PricingCard
+            tier="Pro"
+            price="$79/mo"
+            bestFor="Best for 5-50 users"
+            CTA="14-day free trial"
+            benefits={[
+              { text: "Five workspaces", checked: true },
+              { text: "Email support", checked: true },
+              { text: "7 day data retention", checked: true },
+              { text: "Custom roles", checked: true },
+              { text: "Priority support", checked: false },
+              { text: "SSO", checked: false },
+            ]}
+          />
+          <PricingCard
+            tier="Enterprise"
+            price="Contact us"
+            bestFor="Best for 50+ users"
+            CTA="Contact us"
+            benefits={[
+              { text: "Unlimited workspaces", checked: true },
+              { text: "Email support", checked: true },
+              { text: "30 day data retention", checked: true },
+              { text: "Custom roles", checked: true },
+              { text: "Priority support", checked: true },
+              { text: "SSO", checked: true },
+            ]}
+          />
+        </div>
       </div>
-    </div>
-  );
+    </section>
+  )
 }
 
-export default PricingPage;
+export default page
+
+
