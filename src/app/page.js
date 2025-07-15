@@ -447,7 +447,7 @@ const SocialProofSection = () => {
                 ))}
               </div>
               <Quote className="text-blue-400 mb-4" size={32} />
-              <p className="text-gray-300 mb-6 leading-relaxed">"{testimonial.content}"</p>
+              <p className="text-gray-300 mb-6 leading-relaxed">&quot;{testimonial.content}&quot;</p>
               <div className="flex items-center">
                 <Image
                   src={testimonial.avatar || "/placeholder.png"}
