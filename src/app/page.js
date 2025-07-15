@@ -21,6 +21,9 @@ import {
   X,
   Play,
   ChevronDown,
+  Linkedin,
+  Twitter,
+  Github,
 } from "lucide-react"
 
 // Navigation Component
@@ -179,14 +182,14 @@ const HeroSection = () => {
                 <ArrowRight className="inline ml-2" size={20} />
               </motion.button>
             </Link>
-            <motion.button
+            {/* <motion.button
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
               className="px-8 py-4 bg-white/10 backdrop-blur-sm border border-white/20 text-white rounded-full font-semibold text-lg hover:bg-white/20 transition-all"
             >
               <Play className="inline mr-2" size={20} />
               Watch Demo
-            </motion.button>
+            </motion.button> */}
           </motion.div>
 
           <motion.div
@@ -389,7 +392,7 @@ const SocialProofSection = () => {
       content:
         "Endorse Collect transformed how we gather customer feedback. The process is seamless and the results speak for themselves.",
       rating: 5,
-      avatar: "/placeholder.svg?height=60&width=60",
+      avatar: "/placeholder.png?height=60&width=60",
     },
     {
       name: "Michael Chen",
@@ -398,7 +401,7 @@ const SocialProofSection = () => {
       content:
         "As a freelancer, testimonials are crucial for my business. This platform made it incredibly easy to collect and showcase them.",
       rating: 5,
-      avatar: "/placeholder.svg?height=60&width=60",
+      avatar: "/placeholder.png?height=60&width=60",
     },
     {
       name: "Emily Rodriguez",
@@ -407,7 +410,7 @@ const SocialProofSection = () => {
       content:
         "The analytics and insights helped us understand our client satisfaction better. Highly recommend for any service business.",
       rating: 5,
-      avatar: "/placeholder.svg?height=60&width=60",
+      avatar: "/placeholder.png?height=60&width=60",
     },
   ]
 
@@ -447,7 +450,7 @@ const SocialProofSection = () => {
               <p className="text-gray-300 mb-6 leading-relaxed">"{testimonial.content}"</p>
               <div className="flex items-center">
                 <Image
-                  src={testimonial.avatar || "/placeholder.svg"}
+                  src={testimonial.avatar || "/placeholder.png"}
                   alt={testimonial.name}
                   width={60}
                   height={60}
@@ -638,13 +641,13 @@ const CTASection = () => {
                 <ArrowRight className="inline ml-2" size={20} />
               </motion.button>
             </Link>
-            <motion.button
+            {/* <motion.button
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
               className="px-8 py-4 bg-white/20 backdrop-blur-sm border border-white/30 text-white rounded-full font-semibold text-lg hover:bg-white/30 transition-all"
             >
               Schedule Demo
-            </motion.button>
+            </motion.button> */}
           </div>
         </motion.div>
       </div>
@@ -673,11 +676,18 @@ const Footer = () => {
             <div className="flex space-x-4">
               {/* Social Media Icons */}
               <motion.a
-                href="#"
+                href="https://linkedin.com/in/itzamanjain"
                 whileHover={{ scale: 1.1 }}
                 className="w-10 h-10 bg-gray-800 rounded-lg flex items-center justify-center text-gray-400 hover:text-white hover:bg-blue-600 transition-all"
               >
-                <Share2 size={20} />
+                <Linkedin size={20} />
+              </motion.a>
+              <motion.a
+                href="https://github.com/itzamanjain"
+                whileHover={{ scale: 1.1 }}
+                className="w-10 h-10 bg-gray-800 rounded-lg flex items-center justify-center text-gray-400 hover:text-white hover:bg-blue-600 transition-all"
+              >
+                <Github size={20} />
               </motion.a>
             </div>
           </div>
