@@ -2,9 +2,9 @@
 
 import axios from "axios"
 import { useState, useEffect } from "react"
-import TestimonialCard from "../../../components/TestimonialCard"
+import TestimonialCard from "@/components/TestimonialCard"
 import toast, { Toaster } from "react-hot-toast"
-import { useRouter } from "next/navigation"
+import { useRouter, useParams } from "next/navigation"
 import Link from "next/link"
 import Image from "next/image"
 import { motion, AnimatePresence } from "framer-motion"
@@ -29,7 +29,7 @@ import {
 
 // Loading Skeleton Component
 const ProfileSkeleton = () => (
-  <div className="bg-gray-800/50 p-8 rounded-xl shadow-2xl mb-12 animate-pulse">
+  <div className="bg-gradient-to-br from-gray-800/50 to-gray-700/30 p-8 rounded-xl shadow-2xl mb-12 animate-pulse">
     <div className="flex items-center space-x-8 mb-8">
       <div className="w-32 h-32 bg-gray-700 rounded-full"></div>
       <div className="flex-grow space-y-4">
@@ -42,7 +42,7 @@ const ProfileSkeleton = () => (
 )
 
 const TestimonialSkeleton = () => (
-  <div className="bg-gray-800/50 rounded-xl p-6 animate-pulse">
+  <div className="bg-gradient-to-br from-gray-800/50 to-gray-700/30 rounded-xl p-6 animate-pulse">
     <div className="flex items-center space-x-4 mb-4">
       <div className="w-12 h-12 bg-gray-700 rounded-full"></div>
       <div className="space-y-2 flex-1">
@@ -134,7 +134,7 @@ const EmptyState = () => (
     <p className="text-gray-500 mb-8 max-w-md mx-auto">
       Start collecting testimonials to showcase your work and build trust with potential clients.
     </p>
-    <Link href="/getTestimonials">
+    {/* <Link href="/getTestimonials">
       <motion.button
         whileHover={{ scale: 1.05 }}
         whileTap={{ scale: 0.95 }}
@@ -143,12 +143,15 @@ const EmptyState = () => (
         <Plus className="inline mr-2" size={20} />
         Get Your First Testimonial
       </motion.button>
-    </Link>
+    </Link> */}
   </motion.div>
 )
 
 function ProfilePage() {
   const router = useRouter()
+  const params = useParams()
+  const username = Array.isArray(params.username) ? params.username[0] : params.username
+
   const [user, setUser] = useState(null)
   const [testimonials, setTestimonials] = useState([])
   const [filteredTestimonials, setFilteredTestimonials] = useState([])
@@ -159,35 +162,38 @@ function ProfilePage() {
   const [viewMode, setViewMode] = useState("grid")
   const [retrying, setRetrying] = useState(false)
 
-  const handleLogout = async () => {
-    try {
-      await axios.get("/api/user/logout")
-      toast.success("User logged out successfully!")
-      router.push("/signin")
-    } catch (error) {
-      toast.error("Failed to logout user!")
-      console.log("Error:", error.message)
-    } finally {
-      router.push("/signin")
-    }
-  }
+//   const handleLogout = async () => {
+//     try {
+//       await axios.get("/api/user/logout")
+//       toast.success("User logged out successfully!")
+//       router.push("/signin")
+//     } catch (error) {
+//       toast.error("Failed to logout user!")
+//       console.log("Error:", error.message)
+//     } finally {
+//       router.push("/signin")
+//     }
+//   }
+
+    // get username from url 
+    // make a api call to this http://localhost:3000/api/user/getuser/?username=itsamanjain
+    // will return user with testimonials
 
   const fetchUserProfile = async () => {
-    setLoading(true)
-    setError(null)
-    try {
-      const response = await axios.get("/api/user/profile")
-      console.log("Fetched User Profile:", response);
-      
-      setUser(response.data.user)
-      setTestimonials(response.data.testimonials)
-      setFilteredTestimonials(response.data.testimonials)
-    } catch (error) {
-      setError(error)
-    } finally {
-      setLoading(false)
-    }
+  setLoading(true)
+  setError(null)
+  try {
+    const response = await axios.get(`/api/user/getuser/?username=${username}`)
+    // fetchedUser is an array, take the first element
+    setUser(response.data.fetchedUser[0])
+    setTestimonials(response.data.testimonials)
+    setFilteredTestimonials(response.data.testimonials)
+  } catch (error) {
+    setError(error)
+  } finally {
+    setLoading(false)
   }
+}
 
   const handleRetry = async () => {
     setRetrying(true)
@@ -317,8 +323,8 @@ function ProfilePage() {
           transition={{ duration: 0.5 }}
           className="flex justify-between items-center mb-12"
         >
-          <h1 className="text-4xl font-bold bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent">
-            Your Profile
+          <h1 className="text-4xl font-semibold  bg-clip-text text-gray-300">
+            {username}'s Profile
           </h1>
           <div className="flex space-x-4">
             <motion.button
@@ -339,7 +345,7 @@ function ProfilePage() {
               <Download className="inline mr-2" size={16} />
               Export
             </motion.button>
-            <motion.button
+            {/* <motion.button
               onClick={handleLogout}
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
@@ -347,7 +353,7 @@ function ProfilePage() {
             >
               <LogOut className="inline mr-2" size={16} />
               Logout
-            </motion.button>
+            </motion.button> */}
           </div>
         </motion.div>
 
@@ -358,7 +364,7 @@ function ProfilePage() {
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ delay: 0.2, duration: 0.5 }}
-              className="bg-gradient-to-r from-gray-800/50 to-gray-700/50 backdrop-blur-sm p-8 rounded-2xl shadow-2xl mb-12 border border-gray-700/50"
+              className="bg-gradient-to-br from-gray-800/50 to-gray-700/30 backdrop-blur-sm p-8 rounded-2xl shadow-2xl mb-12 border border-gray-700/50"
             >
               <div className="flex flex-col lg:flex-row items-center lg:items-start space-y-6 lg:space-y-0 lg:space-x-8">
                 <div className="relative group">
@@ -382,16 +388,7 @@ function ProfilePage() {
                         {user.email}
                       </p>
                     </div>
-                    <Link href="/edit-profile">
-                      <motion.button
-                        whileHover={{ scale: 1.05 }}
-                        whileTap={{ scale: 0.95 }}
-                        className="px-6 py-3 bg-white text-black rounded-lg font-semibold hover:bg-gray-100 transition-all shadow-lg"
-                      >
-                        <Settings className="inline mr-2" size={16} />
-                        Edit Profile
-                      </motion.button>
-                    </Link>
+                    
                   </div>
 
                   <p className="text-gray-300 mb-6 max-w-2xl">
@@ -428,7 +425,7 @@ function ProfilePage() {
             </motion.div>
 
             {/* Get Testimonials CTA */}
-            <motion.div
+            {/* <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.4, duration: 0.5 }}
@@ -444,14 +441,14 @@ function ProfilePage() {
                   Get Testimonials
                 </motion.button>
               </Link>
-            </motion.div>
+            </motion.div> */}
           </>
         )}
 
         {/* Reviews Section */}
         <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.6, duration: 0.5 }}>
           <div className="flex items-center justify-between mb-8">
-            <h2 className="text-4xl font-bold bg-gradient-to-r from-purple-400 via-pink-400 to-red-400 bg-clip-text text-transparent">
+            <h2 className="text-4xl font-bold bg-clip-text text-gray-300">
               Reviews ({filteredTestimonials.length})
             </h2>
           </div>

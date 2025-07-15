@@ -8,9 +8,13 @@ export async function GET(request: NextRequest) {
   try {
     console.log('Fetching all users...');
     
-    const users = await User.find({}, 'username fullname email');
-    console.log('Users fetched:', users);
-    
+    const fetchedusers = await User.find({}, 'username fullname email avatarUrl testimonials');
+    // console.log('Users fetched:', users);
+
+    // return users after 12 . means skip first 12 users
+    // const skip = parseInt(request.nextUrl.searchParams.get("skip") || "0",
+
+    const users = fetchedusers.slice(12);
 
     return NextResponse.json({
       success: true,

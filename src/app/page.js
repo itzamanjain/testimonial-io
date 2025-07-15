@@ -625,10 +625,9 @@ const CTASection = () => {
           transition={{ duration: 0.8 }}
           viewport={{ once: true }}
         >
-          <h2 className="text-4xl md:text-5xl font-bold text-white mb-6">Ready to Start Collecting?</h2>
+          <h2 className="text-4xl md:text-5xl font-bold text-white mb-6">Ready to collect testimonials?</h2>
           <p className="text-xl text-blue-100 mb-8 max-w-2xl mx-auto">
-            Join thousands of professionals who are already using Endorse Collect to build trust and grow their
-            business.
+            We are loved by startups, marketing agencies, real estate agencies, freelancers, Fortune 500 companies and many more. Your customers' testimonials are the best social proof we can get! Get started now ✨
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Link href="/signup">

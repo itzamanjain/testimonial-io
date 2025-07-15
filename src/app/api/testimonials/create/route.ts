@@ -3,6 +3,7 @@ import { NextRequest, NextResponse } from 'next/server';
 import Testimonial from '../../../../models/testimonial.model.js'; 
 import { v2 as cloudinary } from 'cloudinary';
 import streamifier from 'streamifier';
+import User from '@/models/user.model.js';
 
 
 
@@ -130,6 +131,10 @@ export async function POST(request: NextRequest) {
 
         // Save the testimonial
         const savedTestimonial = await newTestimonial.save();
+
+        // push the testimonial id to the user's testimonials array
+        await User.findByIdAndUpdate(testimonialGivenTo, {
+            $push: { testimonials: savedTestimonial._id }}, { new: true });
 
         console.log('Testimonial created:', savedTestimonial);
 

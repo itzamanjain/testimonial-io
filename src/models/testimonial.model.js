@@ -42,7 +42,10 @@ const testimonialSchema = new mongoose.Schema(
       min:1,
       max:5,
     },
-    
+    isDeleted: {
+      type: Boolean,
+      default: false,
+    },
     testimonialGivenTo: {
       type: mongoose.Schema.Types.ObjectId,
       ref: "User",
