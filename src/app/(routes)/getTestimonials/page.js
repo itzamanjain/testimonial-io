@@ -36,7 +36,7 @@ const Page = () => {
         transition={{ duration: 0.5 }}
         className="max-w-2xl w-full space-y-8 bg-gray-800 p-8 rounded-xl shadow-2xl"
       >
-        <h1 className='text-yellow-400 text-3xl font-bold text-center mb-6'>
+        <h1 className='text-purple-400 text-3xl font-bold text-center mb-6'>
           Generate Testimonial URL
         </h1>
         <p className="text-gray-300 text-center mb-8">

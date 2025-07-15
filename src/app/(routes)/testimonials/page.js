@@ -302,7 +302,7 @@ function Page() {
                   />
                   <InputField
                     icon={MapPin}
-                    label="Online Presence"
+                    label="LinkedIn ID"
                     name="customerSocialId"
                     value={formData.customerSocialId}
                     onChange={handleChange}

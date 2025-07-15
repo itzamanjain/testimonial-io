@@ -96,11 +96,11 @@ const Signin = () => {
               </label>
             </div>
 
-            <div className="text-sm">
+            {/* <div className="text-sm">
               <a href="#" className="font-medium text-indigo-400 hover:text-indigo-300">
                 Forgot your password?
               </a>
-            </div>
+            </div> */}
           </div>
 
           <div>
