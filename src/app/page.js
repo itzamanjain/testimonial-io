@@ -627,7 +627,7 @@ const CTASection = () => {
         >
           <h2 className="text-4xl md:text-5xl font-bold text-white mb-6">Ready to collect testimonials?</h2>
           <p className="text-xl text-blue-100 mb-8 max-w-2xl mx-auto">
-            We are loved by startups, marketing agencies, real estate agencies, freelancers, Fortune 500 companies and many more. Your customers' testimonials are the best social proof we can get! Get started now ✨
+            We are loved by startups, marketing agencies, real estate agencies, freelancers, Fortune 500 companies and many more. Your customers testimonials are the best social proof we can get! Get started now ✨
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Link href="/signup">

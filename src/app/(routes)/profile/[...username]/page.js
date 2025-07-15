@@ -324,7 +324,7 @@ function ProfilePage() {
           className="flex justify-between items-center mb-12"
         >
           <h1 className="text-4xl font-semibold  bg-clip-text text-gray-300">
-            {username}'s Profile
+            {username}&apos;s Profile
           </h1>
           <div className="flex space-x-4">
             <motion.button
