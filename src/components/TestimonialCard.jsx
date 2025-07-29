@@ -1,5 +1,5 @@
-import { Star } from "lucide-react"
 import Image from "next/image"
+import { FaStar } from "react-icons/fa";
 
 const TestimonialCard = ({ customerName, customerPosition, customerCompany, customerReview, rating, avatarUrl }) => {
   return (
@@ -19,7 +19,8 @@ const TestimonialCard = ({ customerName, customerPosition, customerCompany, cust
           </p>
           <div className="flex items-center mt-1">
             {[...Array(5)].map((_, index) => (
-              <Star key={index} className={`h-4 w-4 ${index < rating ? "text-yellow-400" : "text-gray-500"}`} />
+              <FaStar  key={index} className={`h-4 w-4 ${index < rating ? "text-yellow-400 " : "text-gray-500"}`} />
+              
             ))}
           </div>
         </div>

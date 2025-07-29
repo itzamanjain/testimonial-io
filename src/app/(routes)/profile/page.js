@@ -26,6 +26,7 @@ import {
   List,
   RefreshCw,
 } from "lucide-react"
+import { ProfileHeader } from "@/components/ProfileHeader"
 
 // Loading Skeleton Component
 const ProfileSkeleton = () => (
@@ -354,52 +355,53 @@ function ProfilePage() {
         {user && (
           <>
             {/* Profile Card */}
-            <motion.div
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              transition={{ delay: 0.2, duration: 0.5 }}
-              className="bg-gradient-to-r from-gray-800/50 to-gray-700/50 backdrop-blur-sm p-8 rounded-2xl shadow-2xl mb-12 border border-gray-700/50"
-            >
-              <div className="flex flex-col lg:flex-row items-center lg:items-start space-y-6 lg:space-y-0 lg:space-x-8">
-                <div className="relative group">
-                  <Image
-                    src={user?.avatarUrl || "/placeholder.svg?height=150&width=150"}
-                    alt="User Photo"
-                    width={150}
-                    height={150}
-                    className="rounded-full border-4 border-blue-500/30 shadow-lg group-hover:border-blue-500/50 transition-all"
-                  />
-                  <div className="absolute inset-0 rounded-full bg-gradient-to-t from-black/50 to-transparent opacity-0 group-hover:opacity-100 transition-all"></div>
-                </div>
-
-                <div className="flex-grow text-center lg:text-left">
-                  <div className="flex flex-col lg:flex-row lg:items-center lg:justify-between mb-6">
-                    <div>
-                      
-                      <p className="text-2xl text-gray-300 mb-2">{user.fullname}</p>
-                      <p className="text-blue-300 flex items-center justify-center lg:justify-start">
-                        <Mail className="mr-2" size={16} />
-                        {user.email}
-                      </p>
-                    </div>
-                    <Link href="/edit-profile">
-                      <motion.button
-                        whileHover={{ scale: 1.05 }}
-                        whileTap={{ scale: 0.95 }}
-                        className="px-6 py-3 bg-white text-black rounded-lg font-semibold hover:bg-gray-100 transition-all shadow-lg"
-                      >
-                        <Settings className="inline mr-2" size={16} />
-                        Edit Profile
-                      </motion.button>
-                    </Link>
+            <ProfileHeader user={user} />
+              {/* <motion.div
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                transition={{ delay: 0.2, duration: 0.5 }}
+                className="bg-gradient-to-r from-gray-800/50 to-gray-700/50 backdrop-blur-sm p-8 rounded-2xl shadow-2xl mb-12 border border-gray-700/50"
+              >
+                <div className="flex flex-col lg:flex-row items-center lg:items-start space-y-6 lg:space-y-0 lg:space-x-8">
+                  <div className="relative group">
+                    <Image
+                      src={user?.avatarUrl || "/placeholder.svg?height=150&width=150"}
+                      alt="User Photo"
+                      width={150}
+                      height={150}
+                      className="rounded-full border-4 border-blue-500/30 shadow-lg group-hover:border-blue-500/50 transition-all"
+                    />
+                    <div className="absolute inset-0 rounded-full bg-gradient-to-t from-black/50 to-transparent opacity-0 group-hover:opacity-100 transition-all"></div>
                   </div>
 
-                  <p className="text-gray-300 mb-6 max-w-2xl">
-                    Professional testimonial collector and reviewer. Building trust through authentic customer feedback.
-                  </p>
+                  <div className="flex-grow text-center lg:text-left">
+                    <div className="flex flex-col lg:flex-row lg:items-center lg:justify-between mb-6">
+                      <div>
+                        
+                        <p className="text-2xl text-gray-300 mb-2">{user.fullname}</p>
+                        <p className="text-blue-300 flex items-center justify-center lg:justify-start">
+                          <Mail className="mr-2" size={16} />
+                          {user.email}
+                        </p>
+                      </div>
+                      <Link href="/edit-profile">
+                        <motion.button
+                          whileHover={{ scale: 1.05 }}
+                          whileTap={{ scale: 0.95 }}
+                          className="px-6 py-3 bg-white text-black rounded-lg font-semibold hover:bg-gray-100 transition-all shadow-lg"
+                        >
+                          <Settings className="inline mr-2" size={16} />
+                          Edit Profile
+                        </motion.button>
+                      </Link>
+                    </div>
+
+                    <p className="text-gray-300 mb-6 max-w-2xl">
+                      Professional testimonial collector and reviewer. Building trust through authentic customer feedback.
+                    </p>
+                  </div>
                 </div>
-              </div>
-            </motion.div>
+              </motion.div> */}
 
             {/* Stats Cards */}
             <motion.div

@@ -48,7 +48,7 @@ const Signin = () => {
         className="max-w-md w-full space-y-8 bg-black bg-opacity-50 p-10 rounded-xl backdrop-filter backdrop-blur-lg shadow-2xl"
       >
         <div>
-          <h2 className="mt-6 text-center text-4xl font-extrabold text-white">Welcome Back</h2>
+          <h2 className="mt-6 text-center text-4xl font-semibold text-white">Welcome Back</h2>
           <p className="mt-2 text-center text-sm text-gray-300">
             Sign in to your account
           </p>
@@ -63,7 +63,7 @@ const Signin = () => {
                 type="email"
                 autoComplete="email"
                 required
-                className="appearance-none rounded-t-md relative block w-full px-3 py-3 border border-gray-700 placeholder-gray-400 text-white focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm bg-gray-800"
+                className="appearance-none rounded-lg relative block w-full px-3 py-3 mb-4 border border-gray-700 placeholder-gray-400 text-white focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm bg-gray-800"
                 placeholder="Email address"
                 onChange={handleChange}
               />
@@ -76,7 +76,7 @@ const Signin = () => {
                 type="password"
                 autoComplete="current-password"
                 required
-                className="appearance-none rounded-b-md relative block w-full px-3 py-3 border border-gray-700 placeholder-gray-400 text-white focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm bg-gray-800"
+                className="appearance-none rounded-lg relative block w-full px-3 py-3 border border-gray-700 placeholder-gray-400 text-white focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm bg-gray-800"
                 placeholder="Password"
                 onChange={handleChange}
               />

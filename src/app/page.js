@@ -24,6 +24,7 @@ import {
   Linkedin,
   Twitter,
   Github,
+  User,
 } from "lucide-react"
 
 // Navigation Component
@@ -43,17 +44,17 @@ const Navigation = () => {
     <motion.nav
       initial={{ y: -100 }}
       animate={{ y: 0 }}
-      className={`fixed top-0 w-full z-50 transition-all duration-300 ${
-        scrolled ? "bg-gray-900/95 backdrop-blur-lg border-b border-gray-800" : "bg-transparent"
-      }`}
+      // className={`fixed top-0 w-full z-50 transition-all duration-300 ${
+      //   scrolled ? "bg-gray-900/95 backdrop-blur-lg border-b border-gray-800" : "bg-transparent"
+      // }`}
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center py-4">
           <motion.div whileHover={{ scale: 1.05 }} className="flex items-center space-x-2">
-            <div className="w-10 h-10 bg-gradient-to-r from-purple-400 to-purple-600 rounded-lg flex items-center justify-center">
-              <Award className="text-white" size={24} />
-            </div>
-            <span className="text-2xl font-bold bg-gradient-to-r from-purple-400 to-purple-600 bg-clip-text text-transparent">
+            {/* <div className="w-10 h-10 bg-gradient-to-r from-blue-400 to-blue-600 rounded-lg flex items-center justify-center">
+              <User className="text-white" size={24} />
+            </div> */}
+            <span className="text-2xl font-bold text-white bg-clip-text text-transparent">
               Endorse Collect
             </span>
           </motion.div>
@@ -76,7 +77,7 @@ const Navigation = () => {
               <motion.button
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
-                className="px-6 py-2 bg-gradient-to-r from-purple-600 to-purple-600 text-white rounded-full font-semibold shadow-lg hover:shadow-xl transition-all"
+                className="px-6 py-2 bg-gradient-to-r from-blue-600 to-blue-600 text-white rounded-full font-semibold shadow-lg hover:shadow-xl transition-all"
               >
                 Get Started
               </motion.button>
@@ -145,13 +146,13 @@ const HeroSection = () => {
           className="max-w-4xl mx-auto"
         >
           <motion.h1
-            className="text-5xl md:text-7xl font-bold mb-6 bg-gradient-to-r from-white via-blue-200 to-purple-200 bg-clip-text text-transparent"
+            className="text-5xl md:text-7xl font-bold mb-6 text-white bg-clip-text text-transparent"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.2, duration: 0.8 }}
           >
             Collect Powerful
-            <span className="block bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent">
+            <span className="block text-white bg-clip-text text-transparent">
               Testimonials
             </span>
           </motion.h1>
@@ -176,7 +177,7 @@ const HeroSection = () => {
               <motion.button
                 whileHover={{ scale: 1.05, boxShadow: "0 20px 40px rgba(59, 130, 246, 0.3)" }}
                 whileTap={{ scale: 0.95 }}
-                className="px-8 py-4 bg-gradient-to-r from-purple-600 to-purple-600 text-white rounded-full font-semibold text-lg shadow-xl hover:shadow-2xl transition-all"
+                className="px-8 py-4 bg-gradient-to-r from-blue-600 to-blue-600 text-white rounded-full font-semibold text-lg shadow-xl hover:shadow-2xl transition-all"
               >
                 Start Collecting Free
                 <ArrowRight className="inline ml-2" size={20} />
@@ -277,7 +278,7 @@ const FeaturesSection = () => {
           viewport={{ once: true }}
           className="text-center mb-16"
         >
-          <h2 className="text-4xl md:text-5xl font-bold mb-6 bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent">
+          <h2 className="text-4xl md:text-5xl font-bold mb-6 text-white bg-clip-text text-transparent">
             Everything You Need
           </h2>
           <p className="text-xl text-gray-300 max-w-3xl mx-auto">
@@ -364,7 +365,7 @@ const HowItWorksSection = () => {
               )} */}
 
               <div className="relative">
-                <div className="w-32 h-32 bg-gradient-to-br from-yellow-400 to-purple-600 rounded-full flex items-center justify-center mx-auto mb-8 shadow-2xl">
+                <div className="w-32 h-32 bg-blue-600  rounded-full flex items-center justify-center mx-auto mb-8 shadow-2xl">
                   <step.icon className="text-white" size={48} />
                 </div>
                 {/* <div className="absolute -top-4 -right-4 w-12 h-12 bg-gradient-to-r from-yellow-400 to-orange-500 rounded-full flex items-center justify-center text-black font-bold text-lg">
@@ -571,7 +572,7 @@ const PricingSection = () => {
             >
               {plan.popular && (
                 <div className="absolute -top-4 left-1/2 transform -translate-x-1/2">
-                  <span className="bg-gradient-to-r from-yellow-400 to-purple-500 text-white px-4 py-2 rounded-full text-sm font-semibold">
+                  <span className="bg-gradient-to-r from-blue-400 to-blue-500 text-white px-4 py-2 rounded-full text-sm font-semibold">
                     Most Popular
                   </span>
                 </div>
@@ -600,7 +601,7 @@ const PricingSection = () => {
                 whileTap={{ scale: 0.95 }}
                 className={`w-full py-4 rounded-lg font-semibold transition-all ${
                   plan.popular
-                    ? "bg-gradient-to-r from-blue-600 to-purple-600 text-white shadow-lg hover:shadow-xl"
+                    ? "bg-gradient-to-r from-blue-600 to-blue-600 text-white shadow-lg hover:shadow-xl"
                     : "bg-white/10 text-white border border-white/20 hover:bg-white/20"
                 }`}
               >
@@ -617,7 +618,7 @@ const PricingSection = () => {
 // CTA Section
 const CTASection = () => {
   return (
-    <section className="py-20 bg-gradient-to-r from-purple-300 to-purple-600">
+    <section className="py-20 ">
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
@@ -662,10 +663,10 @@ const Footer = () => {
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
           <div className="col-span-1 md:col-span-2">
             <div className="flex items-center space-x-2 mb-4">
-              <div className="w-10 h-10 bg-gradient-to-r from-purple-400 to-purple-600 rounded-lg flex items-center justify-center">
+              {/* <div className="w-10 h-10 bg-gradient-to-r from-blue-400 to-blue-600 rounded-lg flex items-center justify-center">
                 <Award className="text-white" size={24} />
-              </div>
-              <span className="text-2xl font-bold bg-gradient-to-r from-purple-400 to-purple-400 bg-clip-text text-transparent">
+              </div> */}
+              <span className="text-2xl font-bold text-white bg-clip-text text-transparent">
                 Endorse Collect
               </span>
             </div>

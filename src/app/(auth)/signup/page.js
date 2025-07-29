@@ -70,7 +70,7 @@ const Signup = () => {
         className="max-w-md w-full space-y-8 bg-black bg-opacity-50 p-10 rounded-xl backdrop-filter backdrop-blur-lg shadow-2xl"
       >
         <div>
-          <h2 className="mt-6 text-center text-4xl font-extrabold text-white">Join Us</h2>
+          <h2 className="mt-6 text-center text-4xl font-semibold text-white">Create Account</h2>
           <p className="mt-2 text-center text-sm text-gray-300">
             Create your account and start collecting testimonials
           </p>
@@ -86,7 +86,7 @@ const Signup = () => {
                   type={field === 'email' ? 'email' : field === 'password' ? 'password' : 'text'}
                   autoComplete={field === 'email' ? 'email' : field === 'password' ? 'new-password' : field}
                   required
-                  className={`appearance-none rounded-none relative block w-full px-3 py-3 border border-gray-700 placeholder-gray-400 text-white focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm bg-gray-800 ${index === 0 ? 'rounded-t-md' : index === 3 ? 'rounded-b-md' : ''}`}
+                  className={`appearance-none rounded-lg relative block w-full px-3 py-3 border border-gray-700 placeholder-gray-400 text-white focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm bg-gray-800 mb-4 `}
                   placeholder={field.charAt(0).toUpperCase() + field.slice(1)}
                   onChange={handleChange}
                 />
@@ -101,7 +101,7 @@ const Signup = () => {
                 name="avatar"
                 type="file"
                 accept="image/*"
-                className="appearance-none rounded-none relative block w-full px-3 py-3 border border-gray-700 placeholder-gray-400 text-white focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm bg-gray-800 rounded-b-md"
+                className="appearance-none rounded-lg relative block w-full px-3 py-3 border border-gray-700 placeholder-gray-400 text-white focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm bg-gray-800 "
                 onChange={handleChange}
               />
             </div>
